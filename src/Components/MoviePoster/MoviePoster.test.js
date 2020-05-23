@@ -1,5 +1,5 @@
 import React from "react";
-import { render, waitForElement, waitForElementToBeRemoved } from "@testing-library/react";
+import { render, waitForElement } from "@testing-library/react";
 import axios from "axios";
 import "@testing-library/jest-dom/extend-expect";
 import MoviePoster from "./MoviePoster";
