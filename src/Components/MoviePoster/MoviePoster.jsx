@@ -20,7 +20,7 @@ const MoviePoster = props => {
   return movieName === "" ? (
     <CircularProgress />
   ) : (
-    <div className="movie-poster">
+      <div className="movie-poster hvr-grow-shadow">
       <img
         src={`https://image.tmdb.org/t/p/w200${posterPath}`}
         alt={`Poster for ${movieName} film`}
