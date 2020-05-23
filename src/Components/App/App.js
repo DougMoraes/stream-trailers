@@ -1,15 +1,13 @@
-import React from 'react';
-import { Typography } from "@material-ui/core";
-import MoviePoster from '../MoviePoster/MoviePoster';
+import React from "react";
+import MoviesCarrousel from "../MoviesCarrousel/MoviesCarrousel";
+import "./App.scss";
 
 function App() {
   return (
-    <Typography className="App">
-      <h1>
-        Stream Trailers App 
-      </h1>
-      <MoviePoster />
-    </Typography>
+    <div className="App">
+      <h1>Stream Trailers App</h1>
+      <MoviesCarrousel />
+    </div>
   );
 }
 
