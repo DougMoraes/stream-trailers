@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiKey, movieAPI } from "../../utils/APIs";
+import './MoviePoster.scss';
 
 const MoviePoster = props => {
   const [movieName, setMovieName] = useState("");
@@ -16,7 +17,7 @@ const MoviePoster = props => {
   }, []);
 
   return (
-    <div>
+    <div className="movie-poster">
       <img
         src={`https://image.tmdb.org/t/p/w200${posterPath}`}
         alt={`Poster for ${movieName} film`}
