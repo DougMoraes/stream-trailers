@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CircularProgress } from "@material-ui/core";
 import { apiKey, movieAPI } from "../../utils/APIs";
 import './MoviePoster.scss';
 
@@ -7,6 +8,7 @@ const MoviePoster = props => {
   const [posterPath, setPosterPath] = useState("");
 
   useEffect(() => {
+
     movieAPI
       .get("/550?api_key=" + apiKey)
       .then(resp => resp.data)
@@ -17,13 +19,14 @@ const MoviePoster = props => {
   }, []);
 
   return (
-    <div className="movie-poster">
-      <img
-        src={`https://image.tmdb.org/t/p/w200${posterPath}`}
-        alt={`Poster for ${movieName} film`}
-      />
-      {movieName}
-    </div>
+    movieName === '' ? <CircularProgress /> :
+      <div className="movie-poster">
+        <img
+          src={`https://image.tmdb.org/t/p/w200${posterPath}`}
+          alt={`Poster for ${movieName} film`}
+        />
+        {movieName}
+      </div>
   );
 };
 
