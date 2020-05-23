@@ -3,15 +3,27 @@ import { apiKey, movieAPI } from "../../utils/APIs";
 
 const MoviePoster = props => {
   const [movieName, setMovieName] = useState("");
+  const [posterPath, setPosterPath] = useState("");
 
   useEffect(() => {
     movieAPI
       .get("/550?api_key=" + apiKey)
       .then(resp => resp.data)
-      .then(data => setMovieName(data.original_title));
+      .then(data => {
+        setMovieName(data.original_title)
+        setPosterPath(data.poster_path)
+      });
   }, []);
 
-  return <div>{movieName}</div>;
+  return (
+    <div>
+      <img
+        src={`https://image.tmdb.org/t/p/w200${posterPath}`}
+        alt={`Poster for ${movieName} film`}
+      />
+      {movieName}
+    </div>
+  );
 };
 
 export default MoviePoster;
