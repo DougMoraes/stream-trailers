@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { CircularProgress } from "@material-ui/core";
 import { apiKey, movieAPI, searchMovieAPI, serieAPI } from "../../utils/APIs";
-import MoviePoster from "../MoviePoster/MoviePoster";
+import ItemPoster from "../ItemPoster/ItemPoster";
 
-const MoviesCarrousel = props => {
+const ItemsCarousel = props => {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
   const { category } = props;
 
@@ -66,7 +66,7 @@ const MoviesCarrousel = props => {
       <Carousel autoPlay={false}>
         {array.map(itemsSet =>
           itemsSet.map(item => (
-            <MoviePoster
+            <ItemPoster
               key={item.id}
               itemData={item}
             />
@@ -83,4 +83,4 @@ const MoviesCarrousel = props => {
   );
 };
 
-export default MoviesCarrousel;
+export default ItemsCarousel;

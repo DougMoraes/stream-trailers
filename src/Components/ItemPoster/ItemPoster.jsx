@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./MoviePoster.scss";
+import "./ItemPoster.scss";
 
-const MoviePoster = props => {
+const ItemPoster = props => {
   const { title, name, poster_path } = props.itemData
   const itemName = title ? title : name;
 
@@ -19,4 +19,4 @@ const MoviePoster = props => {
   );
 };
 
-export default MoviePoster;
+export default ItemPoster;
