@@ -6,6 +6,7 @@ import MoviePoster from "../MoviePoster/MoviePoster";
 
 const MoviesCarrousel = props => {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
+  const { category } = props;
 
   useEffect(() => {
     const getPopularMovies = () => {
@@ -33,7 +34,7 @@ const MoviesCarrousel = props => {
     };
 
     const getMoviesByGenre = () => {
-      const genreId = props.category === "family_movies" ? "10751" : "99";
+      const genreId = category === "family_movies" ? "10751" : "99";
 
       searchMovieAPI
         .get(`?api_key=${apiKey}&with_genres=${genreId}`)
@@ -46,12 +47,12 @@ const MoviesCarrousel = props => {
         });
     };
 
-    props.category === "popular_series"
+    category === "popular_series"
       ? getPopularSeries()
-      : props.category === "popular_movies"
+      : category === "popular_movies"
       ? getPopularMovies()
       : getMoviesByGenre();
-  }, []);
+  }, [category]);
 
 
   const splitArray = (itemsPerArray, array) => {
@@ -63,9 +64,10 @@ const MoviesCarrousel = props => {
   const renderCarousel = array => {
     return (
       <Carousel autoPlay={false}>
-        {array.map(itensSet =>
-          itensSet.map(item => (
+        {array.map(itemsSet =>
+          itemsSet.map(item => (
             <MoviePoster
+              key={item.id}
               movieName={item.title}
               posterPath={item.poster_path}
             />
