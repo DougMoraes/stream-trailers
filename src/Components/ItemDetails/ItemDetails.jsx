@@ -8,12 +8,13 @@ const ItemDetails = props => {
 
   return (
     <div className="details-container">
-      <div>
+      <div className="details-text-area">
         <h2>{title}</h2>
-        <section>{overview}</section>
+        <section className={"overview-area"}>{overview}</section>
         <section>{`Average Note: ${vote_average}`}</section>
         <Button
           startIcon={<PlayCircleOutline />}
+          className="play-button"
           variant="contained"
           color="primary"
         >
