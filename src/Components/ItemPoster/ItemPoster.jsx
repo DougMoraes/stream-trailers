@@ -12,6 +12,7 @@ const ItemPoster = props => {
         <img
           src={`https://image.tmdb.org/t/p/w200${poster_path}`}
           alt={`Poster for ${itemName} film`}
+          style={{ height: "93%" }}
         />
         <div className="item-name">{itemName}</div>
       </div>
