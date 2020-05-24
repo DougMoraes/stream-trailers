@@ -1,7 +1,10 @@
-.movie-poster{
-  display: flex;
-  flex-direction: column;
+.item-poster{
   width: 12.5em;
+  padding: 1em;
+}
+
+.item-name{
+  position: absolute;
 }
 
 .hvr-grow-shadow {
