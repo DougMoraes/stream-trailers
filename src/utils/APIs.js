@@ -5,4 +5,14 @@ export const movieAPI = axios.create({
   responseType: "json"
 });
 
+export const serieAPI = axios.create({
+  baseURL: "https://api.themoviedb.org/3/tv/",
+  responseType: "json"
+});
+
+export const searchMovieAPI = axios.create({
+  baseURL: "https://api.themoviedb.org/3/discover/movie",
+  responseType: "json"
+});
+
 export const apiKey = '8b1fe55503ca49a93aa9d23e5695aab9';
