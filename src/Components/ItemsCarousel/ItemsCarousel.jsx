@@ -93,7 +93,7 @@ const ItemsCarousel = props => {
   const renderCarousel = array => {
     return (
       <Carousel
-        partialVisbile={false}
+        centerMode={true}
         responsive={responsive}
         containerClass="carousel-container"
         itemClass="carousel-item-padding-40-px"
