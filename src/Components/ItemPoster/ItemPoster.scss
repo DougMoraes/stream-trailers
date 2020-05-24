@@ -1,7 +1,10 @@
-.movie-poster{
-  display: flex;
-  flex-direction: column;
+.item-poster{
   width: 12.5em;
+  height: 20em;
+}
+
+.item-name{
+  color: white;
 }
 
 .hvr-grow-shadow {

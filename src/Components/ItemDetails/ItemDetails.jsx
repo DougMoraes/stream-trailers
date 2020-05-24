@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Modal, makeStyles } from "@material-ui/core";
 import PlayCircleOutline from "@material-ui/icons/PlayCircleOutline";
-import Player from '../Player/Player';
-import './ItemDetails.scss';
+import Player from "../Player/Player";
+import "./ItemDetails.scss";
 
 function getModalStyle() {
   return {
@@ -15,16 +15,21 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
   paper: {
     position: "absolute",
-    width: 400,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3)
+    boxShadow: theme.shadows[5]
   }
 }));
 
 const ItemDetails = props => {
-  const { title, overview, poster_path, vote_average } = props.location.state.itemData;
+  const {
+    title,
+    name,
+    overview,
+    poster_path,
+    vote_average
+  } = props.location.state.itemData;
+  const itemName = title ? title : name;
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(false);
@@ -42,9 +47,11 @@ const ItemDetails = props => {
   return (
     <div className="details-container">
       <div className="details-text-area">
-        <h2>{title}</h2>
+        <h2>{itemName}</h2>
         <section className={"overview-area"}>{overview}</section>
-        <section>{`Average Note: ${vote_average}`}</section>
+        <section
+          className={"score-area"}
+        >{`Average Score: ${vote_average}`}</section>
         <Button
           startIcon={<PlayCircleOutline />}
           className="play-button"
@@ -56,15 +63,11 @@ const ItemDetails = props => {
         </Button>
       </div>
       <img
+        className="item-detailed-poster"
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        alt={`Poster for ${title} film`}
+        alt={`Poster for ${itemName} film`}
       />
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
+      <Modal open={open} onClose={handleClose}>
         {renderPlayer}
       </Modal>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MoviesCarrousel from "../MoviesCarrousel/MoviesCarrousel";
+import ItemsCarousel from "../ItemsCarousel/ItemsCarousel";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import "./App.scss";
 
@@ -14,13 +14,13 @@ function App() {
         </Route>
         <Route path="/">
           <h2>Popular Movies</h2>
-          <MoviesCarrousel category="popular_movies" />
+          <ItemsCarousel category="popular_movies" />
           <h2>Popular Series</h2>
-          <MoviesCarrousel category="popular_series" />
+          <ItemsCarousel category="popular_series" />
           <h2>Family Movies</h2>
-          <MoviesCarrousel category="family_movies" />
+          <ItemsCarousel category="family_movies" />
           <h2>Documentaries</h2>
-          <MoviesCarrousel category="documentary" />
+          <ItemsCarousel category="documentary" />
         </Route>
       </Switch>
       </div>
