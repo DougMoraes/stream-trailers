@@ -1,0 +1,18 @@
+.details-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-text-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.overview-area{
+  max-width: 60em
+}
+
+.play-button{
+  align-self: center;
+}
