@@ -1,12 +1,41 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
+import Carousel from "react-multi-carousel";
 import { CircularProgress } from "@material-ui/core";
 import { apiKey, movieAPI, searchMovieAPI, serieAPI } from "../../utils/APIs";
 import ItemPoster from "../ItemPoster/ItemPoster";
+import "react-multi-carousel/lib/styles.css";
 
 const ItemsCarousel = props => {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
   const { category } = props;
+
+  const responsive = {
+    largeDesktop: {
+      breakpoint: { max: 3000, min: 1640 },
+      items: 8,
+      slidesToSlide: 8 
+    },
+    desktop: {
+      breakpoint: { max: 1640, min: 1250 },
+      items: 6,
+      slidesToSlide: 6 
+    },
+    smallDesktop: {
+      breakpoint: { max: 1250, min: 840 },
+      items: 4,
+      slidesToSlide: 4 
+    },
+    tablet: {
+      breakpoint: { max: 840, min: 464 },
+      items: 2,
+      slidesToSlide: 2 
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 
+    }
+  };
 
   useEffect(() => {
     const getPopularMovies = () => {
@@ -63,14 +92,14 @@ const ItemsCarousel = props => {
 
   const renderCarousel = array => {
     return (
-      <Carousel autoPlay={false}>
+      <Carousel
+        partialVisbile={false}
+        responsive={responsive}
+        containerClass="carousel-container"
+        itemClass="carousel-item-padding-40-px"
+      >
         {array.map(itemsSet =>
-          itemsSet.map(item => (
-            <ItemPoster
-              key={item.id}
-              itemData={item}
-            />
-          ))
+          itemsSet.map(item => <ItemPoster key={item.id} itemData={item} />)
         )}
       </Carousel>
     );
