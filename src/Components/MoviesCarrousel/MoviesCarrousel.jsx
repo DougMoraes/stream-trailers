@@ -68,8 +68,7 @@ const MoviesCarrousel = props => {
           itemsSet.map(item => (
             <MoviePoster
               key={item.id}
-              movieName={item.title}
-              posterPath={item.poster_path}
+              itemData={item}
             />
           ))
         )}
