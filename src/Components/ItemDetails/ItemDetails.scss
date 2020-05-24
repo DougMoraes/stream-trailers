@@ -6,13 +6,32 @@
 .details-text-area{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding: 15px;
 }
 
 .overview-area{
-  max-width: 60em
+  max-width: 60em;
+  background: rgba(169,169,169, 0.6);
+  padding: 30px
 }
 
 .play-button{
   align-self: center;
+}
+
+@media(max-width: 800px) {
+  .details-container{
+    flex-direction: column-reverse;
+    align-items: center
+  }
+
+  .item-detailed-poster{
+    height: 450px;
+    width: 90%;
+  }
+
+  .score-area{
+    margin: 20px 0px
+  }
 }
