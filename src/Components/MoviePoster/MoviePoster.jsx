@@ -1,31 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { CircularProgress } from "@material-ui/core";
-import { apiKey, movieAPI } from "../../utils/APIs";
+import React from "react";
 import "./MoviePoster.scss";
 
 const MoviePoster = props => {
-  const [movieName, setMovieName] = useState("");
-  const [posterPath, setPosterPath] = useState("");
-
-  useEffect(() => {
-    movieAPI
-      .get("/550?api_key=" + apiKey)
-      .then(resp => resp.data)
-      .then(data => {
-        setMovieName(data.original_title);
-        setPosterPath(data.poster_path);
-      });
-  }, []);
-
-  return movieName === "" ? (
-    <CircularProgress />
-  ) : (
-      <div className="movie-poster hvr-grow-shadow">
+  return (
+    <div className="movie-poster hvr-grow-shadow">
       <img
-        src={`https://image.tmdb.org/t/p/w200${posterPath}`}
-        alt={`Poster for ${movieName} film`}
+        src={`https://image.tmdb.org/t/p/w200${props.posterPath}`}
+        alt={`Poster for ${props.movieName} film`}
       />
-      <div data-testid="movie-name">{movieName}</div>
+      <div data-testid="movie-name">{props.movieName}</div>
     </div>
   );
 };
