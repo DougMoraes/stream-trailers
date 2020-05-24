@@ -8,6 +8,44 @@ const MoviesCarrousel = props => {
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
   useEffect(() => {
+    const getPopularMovies = () => {
+      movieAPI
+        .get("/popular?api_key=" + apiKey)
+        .then(resp => resp.data)
+        .then(data => {
+          return splitArray(8, data.results);
+        })
+        .then(results => {
+          setItemsToDisplay(results);
+        });
+    };
+
+    const getPopularSeries = () => {
+      serieAPI
+        .get("/popular?api_key=" + apiKey)
+        .then(resp => resp.data)
+        .then(data => {
+          return splitArray(8, data.results);
+        })
+        .then(results => {
+          setItemsToDisplay(results);
+        });
+    };
+
+    const getMoviesByGenre = () => {
+      const genreId = props.category === "family_movies" ? "10751" : "99";
+
+      searchMovieAPI
+        .get(`?api_key=${apiKey}&with_genres=${genreId}`)
+        .then(resp => resp.data)
+        .then(data => {
+          return splitArray(8, data.results);
+        })
+        .then(results => {
+          setItemsToDisplay(results);
+        });
+    };
+
     props.category === "popular_series"
       ? getPopularSeries()
       : props.category === "popular_movies"
@@ -15,43 +53,6 @@ const MoviesCarrousel = props => {
       : getMoviesByGenre();
   }, []);
 
-  const getPopularMovies = () => {
-    movieAPI
-      .get("/popular?api_key=" + apiKey)
-      .then(resp => resp.data)
-      .then(data => {
-        return splitArray(8, data.results);
-      })
-      .then(results => {
-        setItemsToDisplay(results);
-      });
-  };
-
-  const getPopularSeries = () => {
-    serieAPI
-      .get("/popular?api_key=" + apiKey)
-      .then(resp => resp.data)
-      .then(data => {
-        return splitArray(8, data.results);
-      })
-      .then(results => {
-        setItemsToDisplay(results);
-      });
-  };
-
-  const getMoviesByGenre = () => {
-    const genreId = props.category === "family_movies" ? "10751" : "99";
-
-    searchMovieAPI
-      .get(`?api_key=${apiKey}&with_genres=${genreId}`)
-      .then(resp => resp.data)
-      .then(data => {
-        return splitArray(8, data.results);
-      })
-      .then(results => {
-        setItemsToDisplay(results);
-      });
-  };
 
   const splitArray = (itemsPerArray, array) => {
     return new Array(Math.ceil(array.length / itemsPerArray))
