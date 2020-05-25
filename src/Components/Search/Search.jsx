@@ -1,7 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { TextField } from "@material-ui/core";
+import { TextField, withStyles } from "@material-ui/core";
 import ItemPoster from "../ItemPoster/ItemPoster";
 import { apiKey, searchMultiAPI } from "../../utils/APIs";
+import "./Search.scss"
+
+const CssTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "white"
+    },
+    "& label": {
+      color: "white"
+    },
+    "& input": {
+      color: "white"
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "white",
+        color: "white"
+      },
+      "&:hover fieldset": {
+        borderColor: "white",
+        color: "white"
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white"
+      }
+    }
+  }
+})(TextField);
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState("");
@@ -32,10 +61,11 @@ const Search = props => {
   }, [searchValue]);
 
   return (
-    <div>
-      <TextField
+    <div className="search-area">
+      <CssTextField
         label="Search..."
-        onChange={event => setSearchValue(event.target.value)}
+        variant="outlined"
+        onChange={e => setSearchValue(e.target.value)}
       />
       <div>
         <h2>Movies</h2>
