@@ -15,4 +15,9 @@ export const searchMovieAPI = axios.create({
   responseType: "json"
 });
 
+export const searchMultiAPI = axios.create({
+  baseURL: "https://api.themoviedb.org/3/search/",
+  responseType: "json"
+});
+
 export const apiKey = '8b1fe55503ca49a93aa9d23e5695aab9';
