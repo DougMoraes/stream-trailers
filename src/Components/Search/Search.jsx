@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { TextField } from "@material-ui/core";
 
 const Search = props => {
-  return <div>Search</div>
+  const [searchValue, setSearchValue] = useState("");
+
+
+  return (
+    <div>
+      <TextField label="Search..." onChange={event => setSearchValue(event.target.value)} />
+    </div>
+  );
 }
 
 export default Search;
