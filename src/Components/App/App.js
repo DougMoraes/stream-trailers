@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";import ItemsCarousel from "../ItemsCarousel/ItemsCarousel";
 import ItemDetails from "../ItemDetails/ItemDetails";
@@ -12,9 +12,11 @@ function App() {
       <div className="App">
         <div className="header">
           <h1>Stream Trailers App</h1>
-          <Button startIcon={<SearchIcon />} variant="outlined" color="primary">
-            Search
-          </Button>
+          <Link to="/search">
+            <Button startIcon={<SearchIcon />} variant="outlined" color="primary" className="search-button">
+              Search
+            </Button>
+          </Link>
         </div>
         <Switch>
           <Route path="/details" component={ItemDetails}></Route>
