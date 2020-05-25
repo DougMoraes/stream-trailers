@@ -1,10 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";import ItemsCarousel from "../ItemsCarousel/ItemsCarousel";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import Search from "../Search/Search";
 import "./App.scss";
+
+const CssButton = withStyles({
+  root: {
+    "& span": {
+      color: "white"
+    },
+  }
+})(Button);
 
 function App() {
   return (
@@ -13,9 +21,14 @@ function App() {
         <div className="header">
           <h1>Stream Trailers App</h1>
           <Link to="/search">
-            <Button startIcon={<SearchIcon />} variant="outlined" color="primary" className="search-button">
+            <CssButton
+              startIcon={<SearchIcon />}
+              color="default"
+              variant="outlined"
+              className="search-button"
+            >
               Search
-            </Button>
+            </CssButton>
           </Link>
         </div>
         <Switch>
