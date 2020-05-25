@@ -16,19 +16,19 @@ That is a study project. A few improvements yet to be donne:
 
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository. You will need `node` and `npm or yarn`  installed globally on your machine.  
 
 Installation:
 
-`npm install`  
+`npm install` or `yarn install`
 
 To Run Test Suite:  
 
-`npm test`  
+`npm test` or `yarn install`
 
 To Start Server:
 
-`npm start`  
+`npm start` or `yarn install`
 
 To Visit App:
 
